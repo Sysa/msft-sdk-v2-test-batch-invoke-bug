@@ -1,0 +1,14 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: compute_item_embeddings_and_savehello
+display_name: compute_item_embeddings_and_savehello
+description: compute_item_embeddings_and_savehello
+version: 0.0.1
+inputs:
+  hello:
+    type: string
+    default: "hello"
+code: "../../../"
+command: python aml/steps/compute_item_embeddings_and_save/script_light.py --hello ${{inputs.hello}}
+environment: azureml:recspoc-dependencies-only-gpu@latest
