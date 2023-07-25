@@ -1,0 +1,23 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: collaborativefiltering_train
+display_name: collaborativefiltering_train
+description: collaborativefiltering_train
+version: 0.0.1
+inputs:
+  interactions_date:
+    type: string
+    default: "2023-06-18"
+  config_path:
+    type: string
+    default: "aml/pipelines/collaborativefiltering/config/cf_owl_male.yaml"
+  extra_args:
+    type: string
+    default: "aml/pipelines/collaborativefiltering/config/cf_owl_male.yaml"
+outputs:
+  model_output:
+    type: uri_folder
+code: "../../../"
+command: python aml/steps/collaborativefiltering_train/script_light.py --interactions-date ${{inputs.interactions_date}} --config ${{inputs.config_path}} --extra_args ${{inputs.extra_args}}
+environment: azureml:recspoc-dependencies-only-gpu@latest

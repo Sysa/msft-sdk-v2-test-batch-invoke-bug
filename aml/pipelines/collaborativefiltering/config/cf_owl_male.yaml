@@ -1,0 +1,29 @@
+name: cf-owl-male
+
+training:
+  model_artifact_name: cf-owl-male
+  epochs: 5
+  batch_size: 1024
+  num_negatives: 100
+  loss_function: WMRB
+  sample_weights_config:
+    transform_name: log
+  save_model: true
+
+data:
+  interactions_type: interactions-owl
+  gender: male
+  pad_history_length: 260
+
+model:
+  embedding_size: 200
+
+tags:
+  - name
+  - training.loss_function
+  - training.sample_weights_config
+  - training.model_artifact_name
+  - data.interactions_type
+  - data.gender
+  - data.pad_history_length
+  - model.embedding_size

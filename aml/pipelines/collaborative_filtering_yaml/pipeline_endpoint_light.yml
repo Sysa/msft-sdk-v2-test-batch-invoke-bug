@@ -1,0 +1,19 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineComponent.schema.json
+type: pipeline
+
+name: collaborative_filtering_pipelinehello
+display_name: CF pipeline endpointhello
+description: Collaborative Filtering pipeline endpoint from yamlhello
+inputs:
+  hello:
+    type: string
+    default: hello
+jobs:
+  cf_train:
+    type: command
+    component: ./cf_train.yml
+  cf_save:
+    type: command
+    component: ./cf_save_light.yml
+    inputs:
+      hello: ${{parent.inputs.hello}}
